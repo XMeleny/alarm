@@ -46,10 +46,18 @@ class ViewController: UIViewController {
         content.title = "this is title"
         content.body = "this is body"
         
+        let calendar = Calendar.current
+        
         var dateComponents = DateComponents()
-        dateComponents.calendar = Calendar.current
-        dateComponents.hour = 17
-        dateComponents.minute = 7
+        dateComponents.calendar = calendar
+        
+        // fixme the hour or min maybe wrong...
+        let now = Date().addingTimeInterval(60)
+        let hour = calendar.component(.hour, from: now)
+        let min = calendar.component(.minute, from: now)
+        
+        dateComponents.hour = hour
+        dateComponents.minute = min
         
         let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
         
@@ -62,7 +70,7 @@ class ViewController: UIViewController {
                 print(error)
             }
         }
-        print("add successfully")
+        print("add successfully at \(hour):\(min)")
     }
     
     func cannotAdd(){
