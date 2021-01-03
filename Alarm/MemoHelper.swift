@@ -62,6 +62,20 @@ func addMemo(memo:Memo){
     }
 }
 
+func getInformation(memo:NSManagedObject) -> (String, String){
+    let content = memo.value(forKey: memo_content) as! String
+    
+    let year = memo.value(forKey: memo_year) as! Int
+    let month = memo.value(forKey: memo_month) as! Int
+    let day = memo.value(forKey: memo_day) as! Int
+    let hour = memo.value(forKey: memo_hour) as! Int
+    let minute = memo.value(forKey: memo_minute) as! Int
+    
+    let ddl = "\(year).\(month).\(day) \(hour):\(minute)"
+    
+    return (content,ddl)
+}
+
 func getAllMemos(handler: ([NSManagedObject])->Void)  {
     let managedObjectContext = getManagedObjectContext()
     let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entity_name_memo)
