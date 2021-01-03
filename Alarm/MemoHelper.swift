@@ -40,25 +40,25 @@ class Memo{
     static func getId() -> Int {
         return Int(Date().timeIntervalSince1970)
     }
+}
+
+func addMemo(memo:Memo){
+    let managedObjectContext = getManagedObjectContext()
+    let entity = NSEntityDescription.entity(forEntityName: entity_name_memo, in: managedObjectContext)!
+    let managedObject = NSManagedObject(entity: entity, insertInto: managedObjectContext)
     
-    func save()  {
-        let managedObjectContext = getManagedObjectContext()
-        let entity = NSEntityDescription.entity(forEntityName: entity_name_memo, in: managedObjectContext)!
-        let memo = NSManagedObject(entity: entity, insertInto: managedObjectContext)
-        
-        memo.setValue(id, forKey: memo_id)
-        memo.setValue(content, forKey: memo_content)
-        memo.setValue(year, forKey: memo_year)
-        memo.setValue(month, forKey: memo_month)
-        memo.setValue(day, forKey: memo_day)
-        memo.setValue(hour, forKey: memo_hour)
-        memo.setValue(minute, forKey: memo_minute)
-        
-        do{
-            try managedObjectContext.save()
-        }catch{
-            fatalError("save entity memo error")
-        }
+    managedObject.setValue(memo.id, forKey: memo_id)
+    managedObject.setValue(memo.content, forKey: memo_content)
+    managedObject.setValue(memo.year, forKey: memo_year)
+    managedObject.setValue(memo.month, forKey: memo_month)
+    managedObject.setValue(memo.day, forKey: memo_day)
+    managedObject.setValue(memo.hour, forKey: memo_hour)
+    managedObject.setValue(memo.minute, forKey: memo_minute)
+    
+    do{
+        try managedObjectContext.save()
+    }catch{
+        fatalError("save entity memo error")
     }
 }
 
@@ -74,5 +74,3 @@ func getAllMemos(handler: ([NSManagedObject])->Void)  {
         fatalError("获取失败")
     }
 }
-
-

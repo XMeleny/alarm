@@ -81,5 +81,10 @@ class ViewController: UIViewController {
     
     @IBAction func sendClick(_ sender: UIButton) {
         requestPermission()
+        let memo = Memo(content: "test", year: 2020, month: 11, day: 19, hour: 20, minute: 0)
+        addMemo(memo: memo)
+        getAllMemos { (result) in
+            print(result)
+        }
     }
 }
