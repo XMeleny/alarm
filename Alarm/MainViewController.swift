@@ -10,6 +10,8 @@ import UIKit
 
 class MainViewController: UITableViewController {
     override func viewDidLoad() {
-        
+        getAllMemos { (result) in
+            //todo
+        }
     }
 }
