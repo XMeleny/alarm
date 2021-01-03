@@ -13,13 +13,10 @@ class MainViewController: UITableViewController{
     let CELL_IDENTIFIER = "MemoCell"
     
     var allMemos = [NSManagedObject]()
-
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        getAllMemos { (result) in
-            allMemos = result
-            tableView.reloadData()
-        }
+        refresh()
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -43,5 +40,27 @@ class MainViewController: UITableViewController{
         cell.detailTextLabel?.text = ddl
         
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let memo = allMemos[indexPath.row]
+        
+        let id = memo.value(forKey: memo_id) as! Int
+        
+        let alert = UIAlertController(title: "delete it?", message: nil, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "yes", style: .default, handler: { (action) in
+            deleteMemo(id: id)
+            self.refresh()
+        }))
+        alert.addAction(UIAlertAction(title: "cancel", style: .cancel, handler: nil))
+        
+        present(alert, animated: true, completion: nil)
+    }
+    
+    func refresh()  {
+        getAllMemos(handler: { (result) in
+            allMemos = result
+        })
+        tableView.reloadData()
     }
 }

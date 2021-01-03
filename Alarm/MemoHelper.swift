@@ -57,8 +57,28 @@ func addMemo(memo:Memo){
     
     do{
         try managedObjectContext.save()
+        print("successfully saved memo, content =\(memo.content), id = \(memo.id)")
     }catch{
         fatalError("save entity memo error")
+    }
+}
+
+func deleteMemo(id:Int) {
+    let context = getManagedObjectContext()
+    let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entity_name_memo)
+    fetchRequest.predicate = NSPredicate(format:"\(memo_id) == \(id)", "")
+
+    do {
+        let fetchedResult = try context.fetch(fetchRequest) as? [NSManagedObject]
+        
+        if let result = fetchedResult{
+            for obj in result{
+                context.delete(obj)
+            }
+            try context.save()
+        }
+    }catch {
+        fatalError("delete error")
     }
 }
 
