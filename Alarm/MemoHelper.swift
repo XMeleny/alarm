@@ -82,6 +82,30 @@ func deleteMemo(id:Int) {
     }
 }
 
+func updateMemo(id:Int, content:String, year:Int, month:Int, day:Int, hour:Int, minute:Int){
+    let context = getManagedObjectContext()
+    let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entity_name_memo)
+    fetchRequest.predicate = NSPredicate(format:"\(memo_id) == \(id)", "")
+
+    do {
+        let fetchedResult = try context.fetch(fetchRequest) as? [NSManagedObject]
+        
+        if let result = fetchedResult{
+            for obj in result{
+                obj.setValue(content, forKey: memo_content)
+                obj.setValue(year, forKey: memo_year)
+                obj.setValue(month, forKey: memo_month)
+                obj.setValue(day, forKey: memo_day)
+                obj.setValue(hour, forKey: memo_hour)
+                obj.setValue(minute, forKey: memo_minute)
+            }
+            try context.save()
+        }
+    }catch {
+        fatalError("update error")
+    }
+}
+
 func getInformation(memo:NSManagedObject) -> (String, String){
     let content = memo.value(forKey: memo_content) as! String
     

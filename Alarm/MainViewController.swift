@@ -44,12 +44,35 @@ class MainViewController: UITableViewController{
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let memo = allMemos[indexPath.row]
-        
+//        testDelete(memo: memo)
+        testUpdate(memo: memo)
+    }
+    
+    func testDelete(memo:NSManagedObject)  {
         let id = memo.value(forKey: memo_id) as! Int
         
         let alert = UIAlertController(title: "delete it?", message: nil, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "yes", style: .default, handler: { (action) in
             deleteMemo(id: id)
+            self.refresh()
+        }))
+        alert.addAction(UIAlertAction(title: "cancel", style: .cancel, handler: nil))
+        
+        present(alert, animated: true, completion: nil)
+    }
+    
+    func testUpdate(memo:NSManagedObject){
+        let id = memo.value(forKey: memo_id) as! Int
+        let content = memo.value(forKey: memo_content) as! String
+        let year = memo.value(forKey: memo_year) as! Int
+        let month = memo.value(forKey: memo_month) as! Int
+        let day = memo.value(forKey: memo_day) as! Int
+        let hour = memo.value(forKey: memo_hour) as! Int
+        let minute = memo.value(forKey: memo_minute) as! Int
+        
+        let alert = UIAlertController(title: "update it?", message: nil, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "yes", style: .default, handler: { (action) in
+            updateMemo(id: id, content: content+content, year: year, month: month, day: day, hour: hour, minute: minute)
             self.refresh()
         }))
         alert.addAction(UIAlertAction(title: "cancel", style: .cancel, handler: nil))
