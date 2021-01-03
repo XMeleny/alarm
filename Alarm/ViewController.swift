@@ -26,6 +26,7 @@ class ViewController: UIViewController {
                 self.cannotAdd()
             }
         }
+        
     }
     
     func addNotification() {

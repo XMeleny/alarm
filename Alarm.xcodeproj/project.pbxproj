@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4C3BA59C25A1950A002460B1 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4C3BA59A25A1950A002460B1 /* Model.xcdatamodeld */; };
 		4C3BA59F25A195D0002460B1 /* DataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3BA59E25A195D0002460B1 /* DataHelper.swift */; };
+		4C3BA5A225A1963E002460B1 /* MemoHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3BA5A125A1963E002460B1 /* MemoHelper.swift */; };
 		4C485F6A2595CC35004E1E76 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C485F692595CC35004E1E76 /* AppDelegate.swift */; };
 		4C485F6C2595CC35004E1E76 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C485F6B2595CC35004E1E76 /* SceneDelegate.swift */; };
 		4C485F6E2595CC35004E1E76 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C485F6D2595CC35004E1E76 /* ViewController.swift */; };
@@ -20,6 +21,7 @@
 /* Begin PBXFileReference section */
 		4C3BA59B25A1950A002460B1 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		4C3BA59E25A195D0002460B1 /* DataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataHelper.swift; sourceTree = "<group>"; };
+		4C3BA5A125A1963E002460B1 /* MemoHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoHelper.swift; sourceTree = "<group>"; };
 		4C485F662595CC35004E1E76 /* Alarm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Alarm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C485F692595CC35004E1E76 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4C485F6B2595CC35004E1E76 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -60,8 +62,9 @@
 		4C485F682595CC35004E1E76 /* Alarm */ = {
 			isa = PBXGroup;
 			children = (
-				4C485F692595CC35004E1E76 /* AppDelegate.swift */,
 				4C3BA59E25A195D0002460B1 /* DataHelper.swift */,
+				4C3BA5A125A1963E002460B1 /* MemoHelper.swift */,
+				4C485F692595CC35004E1E76 /* AppDelegate.swift */,
 				4C485F6B2595CC35004E1E76 /* SceneDelegate.swift */,
 				4C485F6D2595CC35004E1E76 /* ViewController.swift */,
 				4C485F6F2595CC35004E1E76 /* Main.storyboard */,
@@ -148,6 +151,7 @@
 				4C485F6C2595CC35004E1E76 /* SceneDelegate.swift in Sources */,
 				4C3BA59C25A1950A002460B1 /* Model.xcdatamodeld in Sources */,
 				4C3BA59F25A195D0002460B1 /* DataHelper.swift in Sources */,
+				4C3BA5A225A1963E002460B1 /* MemoHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
