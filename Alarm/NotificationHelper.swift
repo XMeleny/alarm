@@ -32,6 +32,7 @@ func addNotification(memo:Memo){
         let content = UNMutableNotificationContent()
         content.title = memo.content
         content.body = memo.getDDL()
+        content.userInfo = [memo_id:memo.id, memo_content:memo.content, memo_year:memo.year, memo_month:memo.month, memo_day:memo.day, memo_hour:memo.hour, memo_minute:memo.minute]
         
         let trigger = UNCalendarNotificationTrigger(dateMatching: memo.getDateComponent(), repeats: false)
         
@@ -47,6 +48,19 @@ func addNotification(memo:Memo){
     } deniedHandler: {
         print("add notification error, permission denied")
     }
+}
+
+func getMemoFromContent(notificationContent:UNNotificationContent) -> Memo{
+    let userInfo = notificationContent.userInfo
+    let id = userInfo[memo_id] as! Int
+    let content = userInfo[memo_content] as! String
+    let year = userInfo[memo_year] as! Int
+    let month = userInfo[memo_month] as! Int
+    let day = userInfo[memo_day] as! Int
+    let hour = userInfo[memo_hour] as! Int
+    let minute = userInfo[memo_minute] as! Int
+    
+    return Memo(id: id, content: content, year: year, month: month, day: day, hour: hour, minute: minute)
 }
 
 func updateNotification(memo:Memo){

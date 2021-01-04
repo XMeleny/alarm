@@ -47,7 +47,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         print("get notification in background at \(Date())")
-        goDetailPage()
+        goDetailPage(memo: getMemoFromContent(notificationContent: response.notification.request.content))
     }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
@@ -56,7 +56,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         let body = notification.request.content.body
         let alert = UIAlertController(title: title, message: body, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "let me see", style: .default, handler: { (action) in
-            self.goDetailPage()
+            self.goDetailPage(memo: getMemoFromContent(notificationContent: notification.request.content))
         }))
         alert.addAction(UIAlertAction(title: "i get it", style: .default, handler: nil))
         getTopController()?.present(alert, animated: true, completion: nil)
@@ -74,9 +74,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         return nil
     }
     
-    func goDetailPage(){
+    func goDetailPage(memo:Memo){
         print("go detail page")
-        //todo
-        
+        print("get from notification: \(memo)")
     }
 }
