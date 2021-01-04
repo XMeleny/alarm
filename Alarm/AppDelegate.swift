@@ -75,7 +75,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     }
     
     func goDetailPage(memo:Memo){
-        print("go detail page")
-        print("get from notification: \(memo)")
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let detailController = storyboard.instantiateViewController(withIdentifier: detail_id) as! DetailViewController
+        detailController.memo = memo
+        getTopController()?.present(detailController, animated: true, completion: nil)
     }
 }

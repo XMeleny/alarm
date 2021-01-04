@@ -7,12 +7,21 @@
 
 import UIKit
 
+let detail_id = "DetailViewController"
 class DetailViewController: UIViewController {
-
+    var memo:Memo?
+    
+    @IBOutlet weak var contentLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        if let memo = memo{
+            contentLabel.text = memo.content
+            dateLabel.text = memo.getDate()
+            timeLabel.text = memo.getTime()
+        }
     }
     
 

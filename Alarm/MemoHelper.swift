@@ -61,8 +61,16 @@ class Memo{
         return Int(Date().timeIntervalSince1970)
     }
     
+    func getDate() -> String {
+        return "\(year).\(month).\(day)"
+    }
+    
+    func getTime() -> String {
+        return "\(hour):\(minute)"
+    }
+    
     func getDDL() -> String {
-        return "\(year).\(month).\(day) \(hour):\(minute)"
+        return "\(getDate()) \(getTime())"
     }
     
     func getDateComponent() -> DateComponents{
