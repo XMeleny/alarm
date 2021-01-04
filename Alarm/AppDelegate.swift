@@ -46,10 +46,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        print("get notification in background at \(Date())")
         goDetailPage()
     }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        print("get notification in foreground at \(Date())")
         let title = notification.request.content.title
         let body = notification.request.content.body
         let alert = UIAlertController(title: title, message: body, preferredStyle: .alert)
@@ -75,5 +77,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     func goDetailPage(){
         print("go detail page")
         //todo
+        
     }
 }
