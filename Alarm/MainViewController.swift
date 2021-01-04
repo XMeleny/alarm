@@ -44,22 +44,21 @@ class MainViewController: UITableViewController{
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let memo = allMemos[indexPath.row]
-//        testDelete(memo: memo)
-//        testUpdate(memo: memo)
         jumpToEdit(obj: memo)
     }
     
-    func testDelete(memo:NSManagedObject)  {
-        let id = memo.value(forKey: memo_id) as! Int
-        
-        let alert = UIAlertController(title: "delete it?", message: nil, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "yes", style: .default, handler: { (action) in
-            deleteMemo(id: id)
-            self.refresh()
-        }))
-        alert.addAction(UIAlertAction(title: "cancel", style: .cancel, handler: nil))
-        
-        present(alert, animated: true, completion: nil)
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete{
+            let alert = UIAlertController(title: "delete it?", message: nil, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "yes", style: .default, handler: { (action) in
+                let id = self.allMemos[indexPath.row].value(forKey: memo_id) as! Int
+                deleteMemo(id: id)
+                self.refresh()
+            }))
+            alert.addAction(UIAlertAction(title: "cancel", style: .cancel, handler: nil))
+            
+            present(alert, animated: true, completion: nil)
+        }
     }
     
     func testUpdate(memo:NSManagedObject){
