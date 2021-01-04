@@ -62,9 +62,12 @@ class EditViewController: UIViewController{
             case .add:
                 let memo = Memo(content: content!, year: year, month: month, day: day, hour: hour, minute: minute)
                 addMemo(memo: memo)
+                addNotification(memo: memo)
                 break
             case .modify:
                 updateMemo(id: inputMemo!.id, content: content!, year: year, month: month, day: day, hour: hour, minute: minute)
+                let memo = Memo(id: inputMemo!.id, content: content!, year: year, month: month, day: day, hour: hour, minute: minute)
+                updateNotification(memo: memo)
                 break
             }
             navigationController?.popViewController(animated: true)

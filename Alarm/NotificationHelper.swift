@@ -27,29 +27,15 @@ func addNotification(grantHandler: @escaping ()->Void,  deniedHandler: @escaping
     }
 }
 
-func addTestNotification()  {
+func addNotification(memo:Memo){
     addNotification {
         let content = UNMutableNotificationContent()
-        content.title = "this is title"
-        content.body = "this is body"
+        content.title = memo.content
+        content.body = memo.getDDL()
         
-        let calendar = Calendar.current
+        let trigger = UNCalendarNotificationTrigger(dateMatching: memo.getDateComponent(), repeats: false)
         
-        var dateComponents = DateComponents()
-        dateComponents.calendar = calendar
-        
-        // 1 min later
-        let now = Date().addingTimeInterval(60)
-        let hour = calendar.component(.hour, from: now)
-        let min = calendar.component(.minute, from: now)
-        
-        dateComponents.hour = hour
-        dateComponents.minute = min
-        
-        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
-        
-        let uuid = UUID().uuidString
-        let request = UNNotificationRequest(identifier: uuid, content: content, trigger: trigger)
+        let request = UNNotificationRequest(identifier: String(memo.id), content: content, trigger: trigger)
         
         let center = UNUserNotificationCenter.current()
         center.add(request) { (error) in
@@ -57,9 +43,14 @@ func addTestNotification()  {
                 print(error)
             }
         }
-        print("add successfully at \(hour):\(min)")
+        print("add notification successfully, will present at \(memo.getDDL())")
     } deniedHandler: {
-        print("permission denied")
+        print("add notification error, permission denied")
     }
+}
 
+func updateNotification(memo:Memo){
+    let center = UNUserNotificationCenter.current()
+    center.removePendingNotificationRequests(withIdentifiers: [String(memo.id)])
+    addNotification(memo: memo)
 }

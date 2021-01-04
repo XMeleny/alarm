@@ -37,6 +37,16 @@ class Memo{
         self.minute = minute
     }
     
+    init(id:Int, content:String, year:Int, month:Int, day:Int, hour:Int, minute:Int) {
+        self.id = id
+        self.content = content
+        self.year = year
+        self.month = month
+        self.day = day
+        self.hour = hour
+        self.minute = minute
+    }
+    
     init(obj:NSManagedObject) {
         id = obj.value(forKey: memo_id) as! Int
         content = obj.value(forKey: memo_content) as! String
@@ -49,6 +59,20 @@ class Memo{
     
     static func getId() -> Int {
         return Int(Date().timeIntervalSince1970)
+    }
+    
+    func getDDL() -> String {
+        return "\(year).\(month).\(day) \(hour):\(minute)"
+    }
+    
+    func getDateComponent() -> DateComponents{
+        var dateComponent = DateComponents()
+        dateComponent.year = year
+        dateComponent.month = month
+        dateComponent.day = day
+        dateComponent.hour = hour
+        dateComponent.minute = minute
+        return dateComponent
     }
 }
 
