@@ -45,7 +45,8 @@ class MainViewController: UITableViewController{
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let memo = allMemos[indexPath.row]
 //        testDelete(memo: memo)
-        testUpdate(memo: memo)
+//        testUpdate(memo: memo)
+        jumpToEdit(obj: memo)
     }
     
     func testDelete(memo:NSManagedObject)  {
@@ -85,5 +86,12 @@ class MainViewController: UITableViewController{
             allMemos = result
         })
         tableView.reloadData()
+    }
+    
+    func jumpToEdit(obj:NSManagedObject){
+        let controller = self.storyboard?.instantiateViewController(identifier: "EditViewController") as! EditViewController
+        controller.inputType = .modify
+        controller.inputMemo = Memo(obj: obj)
+        navigationController?.pushViewController(controller, animated: true)
     }
 }

@@ -37,6 +37,16 @@ class Memo{
         self.minute = minute
     }
     
+    init(obj:NSManagedObject) {
+        id = obj.value(forKey: memo_id) as! Int
+        content = obj.value(forKey: memo_content) as! String
+        year = obj.value(forKey: memo_year) as! Int
+        month = obj.value(forKey: memo_month) as! Int
+        day = obj.value(forKey: memo_day) as! Int
+        hour = obj.value(forKey: memo_hour) as! Int
+        minute = obj.value(forKey: memo_minute) as! Int
+    }
+    
     static func getId() -> Int {
         return Int(Date().timeIntervalSince1970)
     }
@@ -67,7 +77,7 @@ func deleteMemo(id:Int) {
     let context = getManagedObjectContext()
     let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entity_name_memo)
     fetchRequest.predicate = NSPredicate(format:"\(memo_id) == \(id)", "")
-
+    
     do {
         let fetchedResult = try context.fetch(fetchRequest) as? [NSManagedObject]
         
@@ -86,7 +96,7 @@ func updateMemo(id:Int, content:String, year:Int, month:Int, day:Int, hour:Int, 
     let context = getManagedObjectContext()
     let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entity_name_memo)
     fetchRequest.predicate = NSPredicate(format:"\(memo_id) == \(id)", "")
-
+    
     do {
         let fetchedResult = try context.fetch(fetchRequest) as? [NSManagedObject]
         

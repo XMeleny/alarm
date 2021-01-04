@@ -78,7 +78,7 @@
         <!--Edit View Controller-->
         <scene sceneID="rPb-33-78Y">
             <objects>
-                <viewController id="g2V-Vy-tUu" customClass="EditViewController" customModule="Alarm" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EditViewController" id="g2V-Vy-tUu" customClass="EditViewController" customModule="Alarm" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZeR-kZ-OcR">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -124,8 +124,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="contentInput" destination="CJ7-sn-OBg" id="aqA-ni-PTg"/>
                         <outlet property="dateInput" destination="xwb-ta-sbm" id="Qgq-W0-zSY"/>
-                        <outlet property="stuffInput" destination="CJ7-sn-OBg" id="aqA-ni-PTg"/>
                         <outlet property="timeInput" destination="5TM-97-rm6" id="HsI-gC-fEL"/>
                     </connections>
                 </viewController>

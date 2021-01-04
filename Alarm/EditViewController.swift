@@ -9,18 +9,41 @@ import Foundation
 import UIKit
 
 class EditViewController: UIViewController{
-    @IBOutlet weak var stuffInput: UITextField!
+    @IBOutlet weak var contentInput: UITextField!
     
     @IBOutlet weak var dateInput: UIDatePicker!
     @IBOutlet weak var timeInput: UIDatePicker!
     
+    enum InputType{
+        case add
+        case modify
+    }
+    
+    var inputType = InputType.add
+    var inputMemo:Memo?
+    
     override func viewDidLoad() {
-        
+        if inputType == .modify{
+            let memo = inputMemo!
+            let calendar = Calendar.current
+            var dateComponent = DateComponents()
+            dateComponent.year = memo.year
+            dateComponent.month = memo.month
+            dateComponent.day = memo.day
+            dateComponent.hour = memo.hour
+            dateComponent.minute = memo.minute
+            
+            let date = calendar.date(from: dateComponent)
+            
+            contentInput.text = memo.content
+            dateInput.date = date!
+            timeInput.date = date!
+        }
     }
     
     @IBAction func onDoneClick(_ sender: UIBarButtonItem) {
-        let stuff = stuffInput.text
-        if stuff == nil || stuff!.isEmpty {
+        let content = contentInput.text
+        if content == nil || content!.isEmpty {
             //toast
             return
         }else{
@@ -38,7 +61,7 @@ class EditViewController: UIViewController{
             
 //            print("date = \(date), time = \(time)")
 //            print("year = \(year), month = \(month), day = \(day), hour = \(hour), minute = \(minute)")
-            let memo = Memo(content: stuff!, year: year, month: month, day: day, hour: hour, minute: minute)
+            let memo = Memo(content: content!, year: year, month: month, day: day, hour: hour, minute: minute)
             
             addMemo(memo: memo)
             navigationController?.popViewController(animated: true)
