@@ -11,9 +11,12 @@ let detail_id = "DetailViewController"
 class DetailViewController: UIViewController {
     var memo:Memo?
     
+    @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var contentLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var timeLabel: UILabel!
+    
+    @IBOutlet weak var cityLabel: UILabel!
+    @IBOutlet weak var weatherLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,16 +26,4 @@ class DetailViewController: UIViewController {
             timeLabel.text = memo.getTime()
         }
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
