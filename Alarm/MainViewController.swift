@@ -30,11 +30,9 @@ class MainViewController: UITableViewController{
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CELL_IDENTIFIER, for: indexPath)
         
-        let memo = allMemos[indexPath.row]
-        
-        let information = getInformation(memo: memo)
-        let content = information.0
-        let ddl = information.1
+        let memo = Memo(obj: allMemos[indexPath.row])
+        let content = memo.content
+        let ddl = memo.getDDL()
         
         cell.textLabel?.text = content
         cell.detailTextLabel?.text = ddl

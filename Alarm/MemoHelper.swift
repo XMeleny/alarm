@@ -62,11 +62,11 @@ class Memo{
     }
     
     func getDate() -> String {
-        return "\(year).\(month).\(day)"
+        return String(format: "%d.%02d.%02d", year,month,day)
     }
     
     func getTime() -> String {
-        return "\(hour):\(minute)"
+        String(format: "%02d:%02d", hour,minute)
     }
     
     func getDDL() -> String {
@@ -148,20 +148,6 @@ func updateMemo(id:Int, content:String, year:Int, month:Int, day:Int, hour:Int, 
     }
 }
 
-func getInformation(memo:NSManagedObject) -> (String, String){
-    let content = memo.value(forKey: memo_content) as! String
-    
-    let year = memo.value(forKey: memo_year) as! Int
-    let month = memo.value(forKey: memo_month) as! Int
-    let day = memo.value(forKey: memo_day) as! Int
-    let hour = memo.value(forKey: memo_hour) as! Int
-    let minute = memo.value(forKey: memo_minute) as! Int
-    
-    let ddl = "\(year).\(month).\(day) \(hour):\(minute)"
-    
-    return (content,ddl)
-}
-
 func getAllMemos(handler: ([NSManagedObject])->Void)  {
     let managedObjectContext = getManagedObjectContext()
     let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entity_name_memo)
@@ -171,6 +157,6 @@ func getAllMemos(handler: ([NSManagedObject])->Void)  {
             handler(result)
         }
     } catch  {
-        fatalError("获取失败")
+        fatalError("get all memos error")
     }
 }
