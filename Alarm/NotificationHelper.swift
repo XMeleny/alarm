@@ -32,6 +32,7 @@ func addNotification(memo:Memo){
         let content = UNMutableNotificationContent()
         content.title = memo.content
         content.body = memo.getDDL()
+        content.sound = UNNotificationSound(named: UNNotificationSoundName(rawValue: "ding.caf"))
         content.userInfo = [memo_id:memo.id, memo_content:memo.content, memo_year:memo.year, memo_month:memo.month, memo_day:memo.day, memo_hour:memo.hour, memo_minute:memo.minute]
         
         let trigger = UNCalendarNotificationTrigger(dateMatching: memo.getDateComponent(), repeats: false)

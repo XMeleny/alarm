@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C29066225A4608F00AAC046 /* ding.caf in Resources */ = {isa = PBXBuildFile; fileRef = 4C29066125A4608F00AAC046 /* ding.caf */; };
 		4C3BA59C25A1950A002460B1 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4C3BA59A25A1950A002460B1 /* Model.xcdatamodeld */; };
 		4C3BA59F25A195D0002460B1 /* DataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3BA59E25A195D0002460B1 /* DataHelper.swift */; };
 		4C3BA5A225A1963E002460B1 /* MemoHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3BA5A125A1963E002460B1 /* MemoHelper.swift */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4C29066125A4608F00AAC046 /* ding.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ding.caf; sourceTree = "<group>"; };
 		4C3BA59B25A1950A002460B1 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		4C3BA59E25A195D0002460B1 /* DataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataHelper.swift; sourceTree = "<group>"; };
 		4C3BA5A125A1963E002460B1 /* MemoHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoHelper.swift; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 				4C4C9F7025A1AC7D005C643D /* NotificationHelper.swift */,
 				4C4C9F7325A1ADFD005C643D /* MainViewController.swift */,
 				4C4C9F7925A1AEE5005C643D /* DetailViewController.swift */,
+				4C29066125A4608F00AAC046 /* ding.caf */,
 			);
 			path = Alarm;
 			sourceTree = "<group>";
@@ -144,6 +147,7 @@
 			files = (
 				4C485F762595CC36004E1E76 /* LaunchScreen.storyboard in Resources */,
 				4C485F732595CC36004E1E76 /* Assets.xcassets in Resources */,
+				4C29066225A4608F00AAC046 /* ding.caf in Resources */,
 				4C485F712595CC35004E1E76 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
